@@ -39,13 +39,8 @@ def parse_stats(config, filename):
     config_file = f"m5out/config/{filename}_config.json"
     template_file = f"templates/template-{config['cpu']}.xml"
     output_xml = f"m5out/parsed/{filename}.xml"
-    cmd = f"""
-        source $(conda info --base)/etc/profile.d/conda.sh && \
-        conda activate parser && \
-        python parser.py {stats_file} {config_file} {template_file} -o {output_xml}
-        """
+    cmd = f"python2.7 parser.py {stats_file} {config_file} {template_file} -o {output_xml}"
     subprocess.run(cmd, shell=True, check=True, executable='/bin/bash')
-
 
 def run_mcpat(filename):
     input_xml = f"m5out/parsed/{filename}.xml"
@@ -59,7 +54,7 @@ def main():
     print(config)
     print(filename)
 
-    # run_gem5(config, filename)
+    run_gem5(config, filename)
     parse_stats(config, filename)
     run_mcpat(filename)
 
