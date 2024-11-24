@@ -1,0 +1,207 @@
+Script started on 2024-11-24 21:43:21+05:30 [<not executed on terminal>]
+    1  cd .../
+    2  cd ../../gem5/
+    3  build/RISCV/gem5.opt configs/deprecated/example/se.py --cmd=../automotive/bascimath_small --cpu-type=TimingSimpleCPU
+    4  build/RISCV/gem5.opt configs/deprecated/example/se.py --cmd=../automotive/basicmath/basicmath_small --cpu-type=TimingSimpleCPU
+    5  cat m5out/stats.txt 
+    6  cat m5out/stats.txt | grep power
+    7  cd ../
+    8  ls
+    9  cd Gem5McPatParser/
+   10  ls
+   11  cat README.md 
+   12  cd ../gem5/
+   13  cp m5out/stats.txt ../
+   14  cd ..
+   15  mv stats.txt stats-mibench.txt
+   16  cd Gem5McPatParser/
+   17  ls
+   18  ls te
+   19  ls templates/
+   20  ls ..
+   21  python3 Gem5McPATParser.py -s ../stats-mibench.txt -t templates/template_x86.xml
+   22  ls
+   23  ls sample_m5out/
+   24  cat sample_m5out/config.
+   25  cat sample_m5out/config.json 
+   26  python3 Gem5McPATParser.py -s ../stats-mibench.txt -t templates/template_x86.xml -c sample_m5out/config.json
+   27  ls
+   28  bash test.sh 
+   29  ls
+   30  ls sample_m5out/
+   31  rm ../stats-mibench.txt 
+   32  conda
+   33  mkdir -p ~/miniconda3
+   34  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+   35  bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+   36  rm ~/miniconda3/miniconda.sh
+   37  conda
+   38  source ~/miniconda3/bin/activate 
+   39  ls
+   40  conda
+   41  conda create -n gem5
+   42  conda activate gem5
+   43  pip3 install m5
+   44  conda list
+   45  ^[[200~pip install 2to3~
+   46  pip install 2to3
+   47  ^[[200~pip install 2to3~
+   48  pip3 install m5
+   49  python3
+   50  tar -xvf automotive.tar.gz 
+   51  ls
+   52  rm automotive.tar.gz 
+   53  ls automotive/
+   54  ls
+   55  cd ../
+   56  mkdir benchmarks
+   57  cd benchmarks/
+   58  git clone git@github.com:ucb-bar/riscv-benchmarks.git -r
+   59  git clone git@github.com:ucb-bar/riscv-benchmarks.git 
+   60  ls
+   61  cd 
+   62  cd -
+   63  ls ..
+   64  cd ..
+   65  mv automotive/ consumer/ security/ STREAM/ benchmarks/
+   66  ls
+   67  ls submissions/
+   68  ls
+   69  cd benchmarks/
+   70  ls
+   71  cd automotive/
+   72  ls
+   73  cd qsort/
+   74  ls
+   75  cat Makefile 
+   76  riscv64-linux-gnu-gcc-11 -static qsort_small.c -O3 -o qsort_small -lm
+   77  ls
+   78  readelf qsort_small
+   79  readelf qsort_small -h
+   80  ls ..
+   81  cat ../bitcount/bitcnt_1.c 
+   82  ls /opt/
+   83  ls /
+   84  ls /root/
+   85  ls mnt
+   86  ls /mnt
+   87  dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d'
+   88  uname -r
+   89  sudo apt-get -y purge linux-headers-6.8.0-76060800daily20240311 linux-headers-6.8.0-76060800daily20240311-generic  linux-image-6.8.0-76060800daily20240311-generic linux-modules-6.8.0-76060800daily20240311-generic
+   90  cd 
+   91  ls
+   92  cd 
+   93  cd papi/
+   94  ls
+   95  cat delete_before_release.sh l
+   96  cat delete_before_release.sh 
+   97  bash delete_before_release.sh 
+   98  sudo bash delete_before_release.sh 
+   99  cd ..
+  100  rm -r papi/
+  101  ls
+  102  conda -h
+  103  conda
+  104  source ~/miniconda3/conda
+  105  history | grep source
+  106  exec bashj
+  107  exec bash
+  108  ls
+  109  cd aca-project/
+  110  ls
+  111  git clone git@github.com:jeffhammond/STREAM.git
+  112  cd gem5/
+  113  ls
+  114  cd ..
+  115  ls
+  116  cd STREAM/
+  117  ls
+  118  make
+  119  ls
+  120  ./stream_c.exe 
+  121  ./stream_f.exe 
+  122  cat Makefile 
+  123  man exec
+  124  riscv64-linux-gnu-g++ -O2 -fopenmp stream.c -o stream_c_riscv
+  125  riscv64-linux-gnu-gcc-11 -O2 -fopenmp stream.c -o stream_c_riscv
+  126  ls
+  127  cd ../gem5/
+  128  ./build/RISCV/gem5.opt configs/deprecated/example/se.py --cmd=../STREAM/stream_c_riscv  --cpu-type=TimingSimpleCPU --l1d_size=128\kB 
+  129  --l1i_size=128kB --mem-type=DDR4_2400_8x8 --mem-size=512MB
+  130  /build/RISCV/gem5.opt configs/deprecated/example/se.py --cmd=../STREAM/stream_c_riscv  --cpu-type=TimingSimpleCPU --l1d_size=128\kB 
+  131  --l1i_size=128kB --mem-type=DDR4_2400_8x8 --mem-size=512MB
+  132  ./build/RISCV/gem5.opt configs/deprecated/example/se.py --[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$     1  cd .../
+[?2004l1: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$     2  cd ../../gem5/
+[?2004l2: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$     3  build/RISCV/gem5.opt configs/deprecated/example/se.py --cmd=../automotive/bascimath_small --cpu-type=TimingSimpleCPU
+[?2004l3: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$     4  build/RISCV/gem5.opt configs/deprecated/example/se.py --cmd=../automotive/basicmath/basicmath_small --cpu-type=TimingSimpleCPU
+[?2004l4: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$     5  cat m5out/stats.txt 
+[?2004l5: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$     6  cat m5out/stats.txt | grep power
+[?2004l6: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$     7  cd ../
+[?2004l7: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$     8  ls
+[?2004l8: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$     9  cd Gem5McPatParser/
+[?2004l9: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    10  ls
+[?2004l10: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    11  cat README.md 
+[?2004l11: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    12  cd ../gem5/
+[?2004l12: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    13  cp m5out/stats.txt ../
+[?2004l13: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    14  cd ..
+[?2004l14: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    15  mv stats.txt stats-mibench.txt
+[?2004l15: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    16  cd Gem5McPatParser/
+[?2004l16: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    17  ls
+[?2004l17: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    18  ls te
+[?2004l18: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    19  ls templates/
+[?2004l19: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    20  ls ..
+[?2004l20: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    21  python3 Gem5McPATParser.py -s ../stats-mibench.txt -t templates/template_x86.xml
+[?2004l21: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    22  ls
+[?2004l22: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    23  ls sample_m5out/
+[?2004l23: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    24  cat sample_m5out/config.
+[?2004l24: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    25  cat sample_m5out/config.json 
+[?2004l25: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    26  python3 Gem5McPATParser.py -s ../stats-mibench.txt -t templates/template_x86.xml -c sample_m5out/config.json
+[?2004l26: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    27  ls
+[?2004l27: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    28  bash test.sh 
+[?2004l28: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    29  ls
+[?2004l29: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    30  ls sample_m5out/
+[?2004l30: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    31  rm ../stats-mibench.txt 
+[?2004l31: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    32  conda
+[?2004l32: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    33  mkdir -p ~/miniconda3
+[?2004l33: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    34  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+[?2004l34: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    35  bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+[?2004l35: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    36  rm ~/miniconda3/miniconda.sh
+[?2004l36: command not found
+[?2004h(base) ]0;arnavnegi@pop-os: ~/aca-project/ooo-power-analysis[01;32marnavnegi@pop-os[00m:[01;34m~/aca-project/ooo-power-analysis[00m$    37  conda
+[?2004l
+Script done on 2024-11-24 21:43:26+05:30 [COMMAND_EXIT_CODE="0"]

@@ -13,12 +13,16 @@ args = parser.parse_args()
 
 
 class L1Cache(Cache):
-    assoc = 2
-    tag_latency = 2
-    data_latency = 2
-    response_latency = 2
-    mshrs = 4
-    tgts_per_mshr = 20
+    assoc = 16
+
+    tag_latency = 1
+    data_latency = 1
+    response_latency = 1
+
+    mshrs = 128
+    tgts_per_mshr = 16
+    write_buffers = 56
+    demand_mshr_reserve = 96
 
     def connectCPU(self, cpu):
         # need to define this in a base class!
@@ -26,6 +30,7 @@ class L1Cache(Cache):
 
     def connectBus(self, bus):
         self.mem_side = bus.cpu_side_ports
+
 
 
 class L1ICache(L1Cache):
@@ -44,34 +49,22 @@ class L1DCache(L1Cache):
 
 class L2Cache(Cache):
     size = '512kB'
-    assoc = 8
-    tag_latency = 20
-    data_latency = 20
-    response_latency = 20
-    mshrs = 20
-    tgts_per_mshr = 12
-
-    def connectCPUSideBus(self, bus):
-        self.cpu_side = bus.mem_side_ports
-
-    def connectMemSideBus(self, bus):
-        self.mem_side = bus.cpu_side_ports
-
-
-class L3Cache(Cache):
-    size = '4MB'
     assoc = 16
-    tag_latency = 30
-    data_latency = 30
-    response_latency = 30
-    mshrs = 32
+
+    tag_latency = 14
+    data_latency = 14
+    response_latency = 1
+
+    mshrs = 256
     tgts_per_mshr = 16
+    write_buffers = 256
 
     def connectCPUSideBus(self, bus):
         self.cpu_side = bus.mem_side_ports
 
     def connectMemSideBus(self, bus):
         self.mem_side = bus.cpu_side_ports
+
 
 
 system = System()
@@ -90,7 +83,6 @@ system.cpu.icache.connectCPU(system.cpu)
 system.cpu.dcache.connectCPU(system.cpu)
 
 system.l2bus = L2XBar()
-# system.l3bus = L2XBar()
 
 system.cpu.icache.connectBus(system.l2bus)
 system.cpu.dcache.connectBus(system.l2bus)
@@ -98,11 +90,6 @@ system.cpu.dcache.connectBus(system.l2bus)
 system.l2 = L2Cache()
 system.l2.connectCPUSideBus(system.l2bus)
 system.l2.connectMemSideBus(system.membus)
-# system.l2cache.connectMemSideBus(system.l3bus)
-
-# system.l3cache = L3Cache()
-# system.l3cache.connectCPUSideBus(system.l3bus)
-# system.l3cache.connectMemSideBus(system.membus)
 
 # L1i       L1d
 #  |         |
@@ -115,10 +102,6 @@ system.l2.connectMemSideBus(system.membus)
 # -------------
 
 system.cpu.createInterruptController()
-# Connecting memory bus to pio is an x86 thing
-# system.cpu.interrupts[0].pio = system.membus.mem_side_ports
-# system.cpu.interrupts[0].int_requestor = system.membus.cpu_side_ports
-# system.cpu.interrupts[0].int_responder = system.membus.mem_side_ports
 
 system.system_port = system.membus.cpu_side_ports
 

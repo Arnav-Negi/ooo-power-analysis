@@ -299,7 +299,7 @@
     </component>
     <component id="system.L20" name="L20">
             <!-- all the buffer related are optional -->
-            <param name="L2_config" value="1048576,64,16,8,8,14,64,1" />
+            <param name="L2_config" value="524288,64,16,8,8,14,64,1" />
             <!-- the parameters are capacity,block_width, associativity, bank, throughput w.r.t. core clock, latency w.r.t. core clock,output_width, cache policy -->
             <param name="buffer_sizes" value="16, 16, 16, 16" />
             <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->

@@ -51,7 +51,7 @@ class L1DCache(L1Cache):
 
 
 class L2Cache(Cache):
-    size = '1MB'
+    size = '512kB'
     assoc = 16
 
     tag_latency = 14
@@ -67,23 +67,6 @@ class L2Cache(Cache):
 
     def connectMemSideBus(self, bus):
         self.mem_side = bus.cpu_side_ports
-
-
-# class L3Cache(Cache):
-#     size = '2MB'
-#     assoc = 16
-#     tag_latency = 44
-#     data_latency = 44
-#     response_latency = 1
-#     mshrs = 256
-#     tgts_per_mshr = 16
-#     write_buffers = 256
-#
-#     def connectCPUSideBus(self, bus):
-#         self.cpu_side = bus.mem_side_ports
-#
-#     def connectMemSideBus(self, bus):
-#         self.mem_side = bus.cpu_side_ports
 
 
 system = System()
@@ -105,7 +88,6 @@ system.cpu.icache.connectCPU(system.cpu)
 system.cpu.dcache.connectCPU(system.cpu)
 
 system.l2bus = L2XBar()
-# system.l3bus = L2XBar()
 
 system.cpu.icache.connectBus(system.l2bus)
 system.cpu.dcache.connectBus(system.l2bus)
@@ -113,11 +95,6 @@ system.cpu.dcache.connectBus(system.l2bus)
 system.l2 = L2Cache()
 system.l2.connectCPUSideBus(system.l2bus)
 system.l2.connectMemSideBus(system.membus)
-# system.l2cache.connectMemSideBus(system.l3bus)
-
-# system.l3cache = L3Cache()
-# system.l3cache.connectCPUSideBus(system.l3bus)
-# system.l3cache.connectMemSideBus(system.membus)
 
 # L1i       L1d
 #  |         |
@@ -130,11 +107,6 @@ system.l2.connectMemSideBus(system.membus)
 # -------------
 
 system.cpu.createInterruptController()
-# Connecting memory bus to pio is an x86 thing
-# UNCOMMENT THESE FOR x86
-# system.cpu.interrupts[0].pio = system.membus.mem_side_ports
-# system.cpu.interrupts[0].int_requestor = system.membus.cpu_side_ports
-# system.cpu.interrupts[0].int_responder = system.membus.mem_side_ports
 
 system.system_port = system.membus.cpu_side_ports
 
