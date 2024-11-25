@@ -1,0 +1,53 @@
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 24.0.0.1
+gem5 compiled Oct 25 2024 17:41:09
+gem5 started Nov 25 2024 12:18:36
+gem5 executing on faisalDeb, pid 279425
+command line: ./gem5.opt -r --stdout-file=benchmark_results/o3-width8-lqsq32-rob192-iq64-STREAM_100k_result --stats-file=stats/o3-width8-lqsq32-rob192-iq64-STREAM_100k_stats.txt --json-config=config/o3-width8-lqsq32-rob192-iq64-STREAM_100k_config.json configs/o3cpu.py --cmd=./benchmarks/STREAM_100k --width 8 --lqsq 32 --rob 192 --iq 64
+
+Global frequency set at 1000000000000 ticks per second
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (8192 Mbytes) does not match the address range assigned (16384 Mbytes)
+src/arch/riscv/isa.cc:276: info: RVV enabled, VLEN = 256 bits, ELEN = 64 bits
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+system.remote_gdb: Listening for connections on port 7000
+Beginning simulation!
+src/sim/simulate.cc:199: info: Entering event queue @ 0.  Starting simulation...
+src/sim/syscall_emul.cc:85: warn: ignoring syscall set_robust_list(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.hh:1075: warn: readlink() called on '/proc/self/exe' may yield unexpected results in various settings.
+      Returning '/home/faisal/Faisal/Repos/ooo-power-analysis/benchmarks/STREAM_100k'
+src/sim/mem_state.cc:448: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:74: warn: ignoring syscall mprotect(...)
+-------------------------------------------------------------
+STREAM version $Revision: 5.10 $
+-------------------------------------------------------------
+This system uses 8 bytes per array element.
+-------------------------------------------------------------
+Array size = 100000 (elements), Offset = 0 (elements)
+Memory per array = 0.8 MiB (= 0.0 GiB).
+Total memory required = 2.3 MiB (= 0.0 GiB).
+Each kernel will be executed 10 times.
+ The *best* time for each kernel (excluding the first iteration)
+ will be used to compute the reported bandwidth.
+-------------------------------------------------------------
+Your clock granularity/precision appears to be 1 microseconds.
+Each test below will take on the order of 1438 microseconds.
+   (= 1438 clock ticks)
+Increase the size of the arrays if this shows that
+you are not getting at least 20 clock ticks per test.
+-------------------------------------------------------------
+WARNING -- The above is only a rough guideline.
+For best results, please be sure you know the
+precision of your system timer.
+-------------------------------------------------------------
+Function    Best Rate MB/s  Avg time     Min time     Max time
+Copy:            3347.9     0.000481     0.000478     0.000483
+Scale:           3168.5     0.000507     0.000505     0.000509
+Add:             4188.2     0.000579     0.000573     0.000581
+Triad:           4217.1     0.000573     0.000569     0.000577
+-------------------------------------------------------------
+Solution Validates: avg error less than 1.000000e-13 on all three arrays
+-------------------------------------------------------------
+Exiting @ tick 25096132000 because exiting with last active thread context

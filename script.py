@@ -26,7 +26,8 @@ def run_gem5(config, filename):
     config_file = f"configs/{config['cpu']}cpu.py"
     stats_file = f"stats/{filename}_stats.txt"
     json_file = f"config/{filename}_config.json"
-    cmd = f"./gem5.opt --stats-file={stats_file} --json-config={json_file} {config_file} --cmd=./benchmarks/{config['benchmark']}"
+    result_file = f"benchmark_results/{filename}_result"
+    cmd = f"./gem5.opt -r --stdout-file={result_file} --stats-file={stats_file} --json-config={json_file} {config_file} --cmd=./benchmarks/{config['benchmark']}"
     if config['cpu'] == 'o3':
         for key in ['width', 'lqsq', 'rob', 'iq']:
             if config[key] is not None:
