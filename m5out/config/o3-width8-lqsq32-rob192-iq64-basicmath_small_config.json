@@ -25,7 +25,7 @@
             "0:17179869184"
         ],
         "memories": [
-            "system.mem_ctrl.dram"
+            "system.mem_ctrls.dram"
         ],
         "mmap_using_noreserve": false,
         "multi_thread": false,
@@ -1251,9 +1251,9 @@
                     "name": "workload",
                     "path": "system.cpu.workload",
                     "cmd": [
-                        "/home/arnavnegi/aca-project/ooo-power-analysis/benchmarks/basicmath_small"
+                        "/home/faisal/Faisal/Repos/ooo-power-analysis/benchmarks/basicmath_small"
                     ],
-                    "cwd": "/home/arnavnegi/aca-project/ooo-power-analysis",
+                    "cwd": "/home/faisal/Faisal/Repos/ooo-power-analysis",
                     "drivers": [],
                     "egid": 100,
                     "env": [],
@@ -1510,6 +1510,112 @@
             "sys_clk_domain": "system.clk_domain",
             "transition_latency": 100000000
         },
+        "l2": {
+            "type": "Cache",
+            "cxx_class": "gem5::Cache",
+            "name": "l2",
+            "path": "system.l2",
+            "addr_ranges": [
+                "0:18446744073709551615"
+            ],
+            "assoc": 16,
+            "clk_domain": "system.clk_domain",
+            "clusivity": "mostly_incl",
+            "compressor": null,
+            "data_latency": 14,
+            "demand_mshr_reserve": 1,
+            "eventq_index": 0,
+            "is_read_only": false,
+            "max_miss_count": 0,
+            "move_contractions": true,
+            "mshrs": 256,
+            "partitioning_manager": null,
+            "power_model": [],
+            "power_state": {
+                "type": "PowerState",
+                "cxx_class": "gem5::PowerState",
+                "name": "power_state",
+                "path": "system.l2.power_state",
+                "clk_gate_bins": 20,
+                "clk_gate_max": 1000000000000,
+                "clk_gate_min": 1000,
+                "default_state": "UNDEFINED",
+                "eventq_index": 0,
+                "leaders": [],
+                "possible_states": []
+            },
+            "prefetcher": null,
+            "replace_expansions": true,
+            "replacement_policy": {
+                "type": "LRURP",
+                "cxx_class": "gem5::replacement_policy::LRU",
+                "name": "replacement_policy",
+                "path": "system.l2.replacement_policy",
+                "eventq_index": 0
+            },
+            "response_latency": 1,
+            "sequential_access": false,
+            "size": 524288,
+            "system": "system",
+            "tag_latency": 14,
+            "tags": {
+                "type": "BaseSetAssoc",
+                "cxx_class": "gem5::BaseSetAssoc",
+                "name": "tags",
+                "path": "system.l2.tags",
+                "assoc": 16,
+                "block_size": 64,
+                "clk_domain": "system.clk_domain",
+                "entry_size": 64,
+                "eventq_index": 0,
+                "indexing_policy": {
+                    "type": "SetAssociative",
+                    "cxx_class": "gem5::SetAssociative",
+                    "name": "indexing_policy",
+                    "path": "system.l2.tags.indexing_policy",
+                    "assoc": 16,
+                    "entry_size": 64,
+                    "eventq_index": 0,
+                    "size": 524288
+                },
+                "partitioning_manager": null,
+                "power_model": [],
+                "power_state": {
+                    "type": "PowerState",
+                    "cxx_class": "gem5::PowerState",
+                    "name": "power_state",
+                    "path": "system.l2.tags.power_state",
+                    "clk_gate_bins": 20,
+                    "clk_gate_max": 1000000000000,
+                    "clk_gate_min": 1000,
+                    "default_state": "UNDEFINED",
+                    "eventq_index": 0,
+                    "leaders": [],
+                    "possible_states": []
+                },
+                "replacement_policy": "system.l2.replacement_policy",
+                "sequential_access": false,
+                "size": 524288,
+                "system": "system",
+                "tag_latency": 14,
+                "warmup_percentage": 0
+            },
+            "tgts_per_mshr": 16,
+            "warmup_percentage": 0,
+            "write_allocator": null,
+            "write_buffers": 256,
+            "writeback_clean": false,
+            "cpu_side": {
+                "role": "GEM5 RESPONDER",
+                "peer": "system.l2bus.mem_side_ports[0]",
+                "is_source": "False"
+            },
+            "mem_side": {
+                "role": "GEM5 REQUESTOR",
+                "peer": "system.membus.cpu_side_ports[0]",
+                "is_source": "True"
+            }
+        },
         "l2bus": {
             "type": "CoherentXBar",
             "cxx_class": "gem5::CoherentXBar",
@@ -1564,122 +1670,16 @@
             "mem_side_ports": {
                 "role": "GEM5 REQUESTOR",
                 "peer": [
-                    "system.l2cache.cpu_side"
+                    "system.l2.cpu_side"
                 ],
                 "is_source": "True"
             }
         },
-        "l2cache": {
-            "type": "Cache",
-            "cxx_class": "gem5::Cache",
-            "name": "l2cache",
-            "path": "system.l2cache",
-            "addr_ranges": [
-                "0:18446744073709551615"
-            ],
-            "assoc": 16,
-            "clk_domain": "system.clk_domain",
-            "clusivity": "mostly_incl",
-            "compressor": null,
-            "data_latency": 14,
-            "demand_mshr_reserve": 1,
-            "eventq_index": 0,
-            "is_read_only": false,
-            "max_miss_count": 0,
-            "move_contractions": true,
-            "mshrs": 256,
-            "partitioning_manager": null,
-            "power_model": [],
-            "power_state": {
-                "type": "PowerState",
-                "cxx_class": "gem5::PowerState",
-                "name": "power_state",
-                "path": "system.l2cache.power_state",
-                "clk_gate_bins": 20,
-                "clk_gate_max": 1000000000000,
-                "clk_gate_min": 1000,
-                "default_state": "UNDEFINED",
-                "eventq_index": 0,
-                "leaders": [],
-                "possible_states": []
-            },
-            "prefetcher": null,
-            "replace_expansions": true,
-            "replacement_policy": {
-                "type": "LRURP",
-                "cxx_class": "gem5::replacement_policy::LRU",
-                "name": "replacement_policy",
-                "path": "system.l2cache.replacement_policy",
-                "eventq_index": 0
-            },
-            "response_latency": 1,
-            "sequential_access": false,
-            "size": 1048576,
-            "system": "system",
-            "tag_latency": 14,
-            "tags": {
-                "type": "BaseSetAssoc",
-                "cxx_class": "gem5::BaseSetAssoc",
-                "name": "tags",
-                "path": "system.l2cache.tags",
-                "assoc": 16,
-                "block_size": 64,
-                "clk_domain": "system.clk_domain",
-                "entry_size": 64,
-                "eventq_index": 0,
-                "indexing_policy": {
-                    "type": "SetAssociative",
-                    "cxx_class": "gem5::SetAssociative",
-                    "name": "indexing_policy",
-                    "path": "system.l2cache.tags.indexing_policy",
-                    "assoc": 16,
-                    "entry_size": 64,
-                    "eventq_index": 0,
-                    "size": 1048576
-                },
-                "partitioning_manager": null,
-                "power_model": [],
-                "power_state": {
-                    "type": "PowerState",
-                    "cxx_class": "gem5::PowerState",
-                    "name": "power_state",
-                    "path": "system.l2cache.tags.power_state",
-                    "clk_gate_bins": 20,
-                    "clk_gate_max": 1000000000000,
-                    "clk_gate_min": 1000,
-                    "default_state": "UNDEFINED",
-                    "eventq_index": 0,
-                    "leaders": [],
-                    "possible_states": []
-                },
-                "replacement_policy": "system.l2cache.replacement_policy",
-                "sequential_access": false,
-                "size": 1048576,
-                "system": "system",
-                "tag_latency": 14,
-                "warmup_percentage": 0
-            },
-            "tgts_per_mshr": 16,
-            "warmup_percentage": 0,
-            "write_allocator": null,
-            "write_buffers": 256,
-            "writeback_clean": false,
-            "cpu_side": {
-                "role": "GEM5 RESPONDER",
-                "peer": "system.l2bus.mem_side_ports[0]",
-                "is_source": "False"
-            },
-            "mem_side": {
-                "role": "GEM5 REQUESTOR",
-                "peer": "system.membus.cpu_side_ports[0]",
-                "is_source": "True"
-            }
-        },
-        "mem_ctrl": {
+        "mem_ctrls": {
             "type": "MemCtrl",
             "cxx_class": "gem5::memory::MemCtrl",
-            "name": "mem_ctrl",
-            "path": "system.mem_ctrl",
+            "name": "mem_ctrls",
+            "path": "system.mem_ctrls",
             "clk_domain": "system.clk_domain",
             "command_window": 10000,
             "disable_sanity_check": false,
@@ -1687,7 +1687,7 @@
                 "type": "DRAMInterface",
                 "cxx_class": "gem5::memory::DRAMInterface",
                 "name": "dram",
-                "path": "system.mem_ctrl.dram",
+                "path": "system.mem_ctrls.dram",
                 "IDD0": 0.055,
                 "IDD02": 0.0,
                 "IDD2N": 0.032,
@@ -1740,7 +1740,7 @@
                     "type": "PowerState",
                     "cxx_class": "gem5::PowerState",
                     "name": "power_state",
-                    "path": "system.mem_ctrl.dram.power_state",
+                    "path": "system.mem_ctrls.dram.power_state",
                     "clk_gate_bins": 20,
                     "clk_gate_max": 1000000000000,
                     "clk_gate_min": 1000,
@@ -1794,7 +1794,7 @@
                 "type": "PowerState",
                 "cxx_class": "gem5::PowerState",
                 "name": "power_state",
-                "path": "system.mem_ctrl.power_state",
+                "path": "system.mem_ctrls.power_state",
                 "clk_gate_bins": 20,
                 "clk_gate_max": 1000000000000,
                 "clk_gate_min": 1000,
@@ -1884,7 +1884,7 @@
             "cpu_side_ports": {
                 "role": "GEM5 RESPONDER",
                 "peer": [
-                    "system.l2cache.mem_side",
+                    "system.l2.mem_side",
                     "system.system_port"
                 ],
                 "is_source": "False"
@@ -1892,7 +1892,7 @@
             "mem_side_ports": {
                 "role": "GEM5 REQUESTOR",
                 "peer": [
-                    "system.mem_ctrl.port"
+                    "system.mem_ctrls.port"
                 ],
                 "is_source": "True"
             }
