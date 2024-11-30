@@ -13,6 +13,7 @@ parser.add_argument('--width', type=int, default=8, help='Issue width')
 parser.add_argument('--lqsq', type=int, default=32, help='Load/Store queue size')
 parser.add_argument('--rob', type=int, default=192, help='Reorder buffer size')
 parser.add_argument('--iq', type=int, default=64, help='Instruction queue size')
+parser.add_argument('--regs', type=int, default=256, help='Num Int and Float regs')
 args = parser.parse_args()
 
 
@@ -81,6 +82,26 @@ system.cpu = RiscvO3CPU()
 # O3 cpu is a 5 stage pipeline
 system.cpu.issueWidth = 8  # widths of the other pipeline stages (decode, rename etc) are also 8
 system.cpu.numROBEntries = 192
+
+# set parser arguments
+system.cpu.fetchWidth = args.width
+system.cpu.decodeWidth = args.width
+system.cpu.renameWidth = args.width
+system.cpu.dispatchWidth = args.width
+system.cpu.issueWidth = args.width
+# system.cpu.wbWidth = args.width
+system.cpu.commitWidth = args.width
+system.cpu.squashWidth = args.width
+
+system.cpu.LQEntries = args.lqsq
+system.cpu.SQEntries = args.lqsq
+
+system.cpu.numROBEntries = args.rob
+
+system.cpu.numIQEntries = args.iq
+system.cpu.numPhysIntRegs = args.regs
+system.cpu.numPhysFloatRegs = args.regs
+
 system.membus = SystemXBar()
 system.cpu.icache = L1ICache()
 system.cpu.dcache = L1DCache()
@@ -116,6 +137,7 @@ system.mem_ctrls.dram.range = system.mem_ranges[0]
 system.mem_ctrls.port = system.membus.mem_side_ports
 system.mem_ctrls.dram.read_buffer_size = 512  # Number of entries in read queue
 system.mem_ctrls.dram.write_buffer_size = 512  # Number of entries in write queue
+
 
 binary = os.path.abspath(args.cmd)
 

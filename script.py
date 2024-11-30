@@ -3,6 +3,13 @@ import subprocess
 import os
 import shutil
 
+default_params={
+    'width': 8,
+    'lqsq': 32,
+    'rob': 192,
+    'iq': 64
+}
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Run benchmark with specified configuration and process results.")
     parser.add_argument('--cpu', required=True, choices=['minor', 'o3'], help='Type of CPU: minor or o3')
@@ -17,7 +24,7 @@ def construct_filename(config):
     filename = f"{config['cpu']}"
     if config['cpu'] == 'o3':
         for key in ['width', 'lqsq', 'rob', 'iq']:
-            if config[key] is not None:
+            if config[key] is not None and config[key] != default_params[key]:
                 filename += f"-{key}{config[key]}"
     filename += f"-{config['benchmark'].split('/')[-1]}"
     return filename
@@ -51,13 +58,16 @@ def run_mcpat(filename):
 
 def main():
     config = parse_arguments()
-    filename = construct_filename(config)
-    print(config)
-    print(filename)
+    for w in [1, 2, 4, 8, 12]:
+        print(f"Running with width {w}")
+        config['width'] = w
+        filename = construct_filename(config)
+        print(config)
+        print(filename)
 
-    run_gem5(config, filename)
-    parse_stats(config, filename)
-    run_mcpat(filename)
+        run_gem5(config, filename)
+        parse_stats(config, filename)
+        run_mcpat(filename)
 
 if __name__ == "__main__":
     main()
